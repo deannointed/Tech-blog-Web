@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Revolution — TechBlog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header id="main-header">
+    <h1><a href="index.html">TechBlog</a></h1>
+
+
+<!-- Hamburger Menu Icon -->
+<div class="menu-icon" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Navigation -->
+<nav id="nav-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="comment.html">Comments</a>
+  <a href="teams.html">Meet Our TEAM</a>
+</nav>
+
+
+  </header>
+
+  <!-- Post Container -->
+  <section class="post-container">
+    <div class="post-header">
+      <span class="post-category">Mobile Technology</span>
+      <h1>Mobile Revolution: How Smartphones Are Changing Everything</h1>
+      <p class="post-meta">By TechBlog Team • November 3, 2025</p>
+    </div>
+
+    <div class="post-content">
+      <p>Smartphones have redefined how we live, work, and connect. They are now the most essential piece of technology, blending communication, computing, and entertainment into a single device.</p>
+
+      <h3>5G and Beyond</h3>
+      <p>The rollout of 5G technology is enabling faster connections, powering smart cities, autonomous vehicles, and augmented experiences. Upcoming 6G networks promise even more radical transformation.</p>
+
+      <h3>Mobile Payments and Digital Wallets</h3>
+      <p>Cashless economies are growing as mobile banking and wallets like Apple Pay, Google Pay, and Paystack become mainstream. Security, encryption, and biometric authentication ensure safer transactions.</p>
+
+      <h3>AI on Mobile</h3>
+      <p>On-device AI is making smartphones smarter than ever — from predictive text to advanced photography powered by neural processing units (NPUs).</p>
+
+      <h3>The Next Chapter</h3>
+      <p>Foldable screens, wearable integration, and sustainable materials will shape the future of mobile tech, bringing users closer to a seamless digital lifestyle.</p>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Home</a>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      const icon = document.querySelector('.menu-icon');
+      menu.classList.toggle('active');
+      icon.classList.toggle('active');
+    }
+
+    let lastScroll = 0;
+    const header = document.getElementById('main-header');
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+      if(currentScroll > lastScroll){
+        header.classList.remove("scroll-up");
+        header.classList.add("scroll-down");
+      } else {
+        header.classList.remove("scroll-down");
+        header.classList.add("scroll-up");
+      }
+      lastScroll = currentScroll;
+    });
+  </script>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 TechBlog • Futuristic Insights for Innovators</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet Our Team — TechBlog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="main-header">
+    <h1><a href="index.html">TechBlog</a></h1>
+
+
+<!-- Hamburger Menu Icon -->
+<div class="menu-icon" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Navigation -->
+<nav id="nav-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="comment.html">Comments</a>
+  <a href="teams.html">Meet Our TEAM</a>
+</nav>
+
+
+  </header>
+
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+      <!-- Team Member 1 -->
+      <article class="team-member">
+        <img src="./Adewunmi.jpg" alt="Photo of Your Name" />
+        <h4>Adewunmi Oluwadarasimi Samuel</h4>
+        <p>Founder & Chief Editor</p>
+        <P>Email: <a href="adewunmidarasimi5@gmail.com">adewunmidarasimi5@gmail.com</a></P>
+        <p>Phone No: <a href="08086516579">08086516579</a></p>
+      </article>
+
+      <!-- Team Member 2 -->
+      <article class="team-member">
+        <img src="./Ojeneye Daniel Ayobami .jpg" alt="Photo of Coworker 1" />
+        <h4>Ojeneye Daniel Ayobami</h4>
+        <p>Technology Writer</p>
+        <P>Email: <a href="ummiethereal444@gmail.com">ummiethereal444@gmail.com.</a></P>
+        <p>Phone No: <a href="08086516579">08086516579</a></p>
+      </article>
+
+      <!-- Team Member 3 -->
+      <article class="team-member">
+        <img src="./Ahmed Tumininu Shodunke.jpg" alt="Photo of Coworker 2" />
+        <h4>Ahmed Tumininu Shodunke</h4>
+        <p>Web Developer</p>
+        <P>Email: <a href="ummiethereal444@gmail.com">ummiethereal444@gmail.com.</a></P>
+        <p>Phone No: <a href="09116395034">09116395034</a></p>
+      </article>
+
+      <!-- Team Member 4 -->
+      <article class="team-member">
+        <img src="./Olakunle Oluwaseunfunmi GOD'sDELIGHT.jpg" alt="Photo of Coworker 3" />
+        <h4>Olakunle Oluwaseunfunmi GOD'sDELIGHT</h4>
+        <p>Web Developer</p>
+        <p>Email: <a href="olakunleoluwaseunfunmi02@gmail.com ">olakunleoluwaseunfunmi02@gmail.com</a></p>
+        <p>Phone No: <a href="09033945075">09033945075</a></p>
+      </article>
+
+      <!-- Team Member 5 -->
+      <article class="team-member">
+        <img src="./Bello Ridwan Olamide .jpg" alt="Photo of Coworker 4" />
+        <h4>Bello Ridwan Olamide</h4>
+        <p>Web Developer</p>
+        <p>Email: <a href="bridwan.bello200@gmail.com">bridwan.bello200@gmail.com </a></p>
+        <p>Phone No: <a href="09165777463">09165777463</a></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 TechBlog. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      const icon = document.querySelector('.menu-icon');
+      menu.classList.toggle('active');
+      icon.classList.toggle('active');
+    }
+
+    let lastScroll = 0;
+    const header = document.getElementById('main-header');
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+      if(currentScroll > lastScroll){
+        header.classList.remove("scroll-up");
+        header.classList.add("scroll-down");
+      } else {
+        header.classList.remove("scroll-down");
+        header.classList.add("scroll-up");
+      }
+      lastScroll = currentScroll;
+    });
+  </script>
+</body>
+</html>

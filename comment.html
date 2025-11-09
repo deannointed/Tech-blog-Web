@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comments — TechBlog</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="main-header">
+    <h1><a href="index.html">TechBlog</a></h1>
+
+
+<!-- Hamburger Menu Icon -->
+<div class="menu-icon" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Navigation -->
+<nav id="nav-menu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="comment.html">Comments</a>
+  <a href="teams.html">Meet Our TEAM</a>
+</nav>
+
+
+  </header>
+
+
+  <!-- Main Content -->
+  <main class="about-page">
+    <section class="intro">
+      <h2>Share Your Comment</h2>
+      <p>
+        We’d love to hear from you! Whether you have questions, suggestions, or partnership ideas, 
+        feel free to reach out. Our team is always ready to connect and collaborate.
+      </p>
+    </section>
+
+    <section class="contact-form">
+      <h2>Send Us a Message</h2>
+      <form action="https://formsubmit.co/adewunmidarasimi5@gmail.com" method="POST">
+        <label for="name">Full Name</label><br />
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required /><br /><br />
+
+        <label for="email">Email</label><br />
+        <input type="email" id="email" name="email" placeholder="Enter your email" required /><br /><br />
+
+        <label for="message">Comment</label><br />
+        <textarea id="message" name="message" rows="5" placeholder="Write your comment..." required></textarea><br /><br />
+
+        <button type="submit" class="more-btn">We'd Love Your Comment!</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 TechBlog — All Rights Reserved.</p>
+  </footer>
+
+  <!-- Scroll Behavior -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      const icon = document.querySelector('.menu-icon');
+      menu.classList.toggle('active');
+      icon.classList.toggle('active');
+    }
+
+    let lastScroll = 0;
+    const header = document.getElementById('main-header');
+
+    window.addEventListener("scroll", () => {
+      const currentScroll = window.pageYOffset;
+      if(currentScroll > lastScroll){
+        header.classList.remove("scroll-up");
+        header.classList.add("scroll-down");
+      } else {
+        header.classList.remove("scroll-down");
+        header.classList.add("scroll-up");
+      }
+      lastScroll = currentScroll;
+    });
+  </script>
+
+</body>
+</html>

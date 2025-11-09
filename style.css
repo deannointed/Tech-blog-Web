@@ -1,0 +1,987 @@
+/* === Futuristic Tech Blog — Updated style.css === */
+
+/* ---- CSS variables for easy header offset tweaks ---- */
+:root {
+--header-offset-desktop: 110px;
+--header-offset-mobile: 120px;
+--primary-color: #00e6ff;
+--secondary-color: #007bff;
+}
+
+/* === Global styles === */
+
+* { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(circle at top left, #03111f, #060b18 60%, #020b16);
+  color: #e0faff;
+  line-height: 1.6;
+  overflow-x: hidden;
+  padding-top: var(--header-offset-desktop);
+  }
+
+/* Links */
+a { color: var(--primary-color); text-decoration: none; transition: 0.25s; }
+a:hover { text-shadow: 0 0 6px var(--primary-color); }
+
+/* === Header === */
+header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 25px 60px;
+background: rgba(0,0,0,0.4);
+backdrop-filter: blur(10px);
+border-bottom: 1px solid rgba(0,255,255,0.1);
+z-index: 1000;
+transition: all 0.35s ease;
+}
+header h1 a {
+color: var(--primary-color);
+font-size: 1.6rem;
+letter-spacing: 1px;
+font-weight: 700;
+}
+
+/* Hamburger menu */
+.menu-icon {
+display: none;
+flex-direction: column;
+justify-content: space-between;
+width: 28px;
+height: 22px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.menu-icon span {
+display: block;
+height: 3px;
+background: var(--primary-color);
+border-radius: 2px;
+transition: all 0.3s ease;
+}
+.menu-icon.active span:nth-child(1) {
+transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-icon.active span:nth-child(2) { opacity: 0; }
+.menu-icon.active span:nth-child(3) {
+transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Navigation */
+#nav-menu { display: flex; gap: 1rem; }
+#nav-menu a {
+color: #fff;
+margin-left: 20px;
+font-weight: 500;
+transition: all 0.25s;
+}
+#nav-menu a:hover { color: var(--primary-color); text-shadow: 0 0 8px var(--primary-color); }
+
+/* === Hero Section === */
+.hero {
+text-align: center;
+padding: 80px 20px;
+background: linear-gradient(180deg, #0a0a0a, #111827);
+border-bottom: 1px solid rgba(0,245,255,0.14);
+}
+.hero h2 {
+font-size: 2.4rem;
+color: var(--primary-color);
+margin-bottom: 15px;
+text-shadow: 0 0 15px var(--primary-color);
+}
+.hero p {
+color: #b0b0b0;
+font-size: 1.1rem;
+max-width: 600px;
+margin: 0 auto;
+}
+
+/* === Boxed Sections === */
+.boxed-section h2 {
+font-size: 1.8rem;
+color: var(--primary-color);
+margin-bottom: 25px;
+border-left: 5px solid #00f5ff;
+padding-left: 10px;
+}
+.box-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+gap: 25px;
+}
+.box {
+background: #101820;
+border: 1px solid rgba(0,245,255,0.2);
+border-radius: 15px;
+padding: 25px;
+display: block;
+color: #e0e0e0;
+transition: all 0.35s ease;
+position: relative;
+overflow: hidden;
+}
+.box::before {
+content: "";
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(45deg, #00f5ff, #007bff, #00f5ff, #007bff);
+opacity: 0.15;
+transform: rotate(45deg);
+transition: all 0.5s ease;
+}
+.box:hover::before { opacity: 0.3; transform: rotate(90deg); }
+.box:hover { transform: translateY(-6px); box-shadow: 0 0 25px rgba(0,255,255,0.25); border-color: #00f5ff; }
+.box h3 { color: var(--primary-color); font-size: 1.2rem; margin-bottom: 10px; }
+.box p { color: #bbb; font-size: 0.95rem; }
+
+/* More Button */
+.more-btn-container { text-align: center; margin-top: 30px; }
+.more-btn {
+background: var(--primary-color);
+color: #000;
+padding: 12px 35px;
+border-radius: 25px;
+font-weight: 600;
+text-decoration: none;
+display: inline-block;
+transition: all 0.3s ease;
+}
+.more-btn:hover { transform: scale(1.08); background: #00ffff; }
+
+/* Footer */
+footer {
+text-align: center;
+padding: 25px 20px;
+color: #6abbe9;
+font-size: 0.9rem;
+border-top: 1px solid rgba(0,255,255,0.1);
+margin-top: 40px;
+background: rgba(0,0,0,0.4);
+backdrop-filter: blur(10px);
+}
+
+/* Posts / Articles */
+.post-container {
+max-width: 900px;
+margin: 70px auto;
+padding: 40px 25px;
+background: rgba(0,0,0,0.3);
+border-radius: 15px;
+border: 1px solid rgba(0,255,255,0.1);
+box-shadow: 0 0 20px rgba(0,255,255,0.05);
+}
+.post-header { text-align: center; margin-bottom: 35px; }
+.post-header h1 {
+font-size: 2.2em;
+color: var(--primary-color);
+text-shadow: 0 0 10px #00f0ff;
+letter-spacing: 0.5px;
+font-weight: 700;
+}
+.post-content { color: #d5eaff; font-size: 1.05rem; line-height: 1.8; padding: 15px 10px; }
+
+/* About / Contact / Team Sections */
+.about-page, .contact-form, .team-section {
+background: rgba(0,0,0,0.35);
+border-radius: 15px;
+padding: 30px;
+border: 1px solid rgba(0,255,255,0.1);
+box-shadow: 0 0 20px rgba(0,255,255,0.08);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb {
+background: linear-gradient(#00bcd4,#007bff);
+border-radius: 10px;
+}
+::-webkit-scrollbar-track { background: rgba(0,255,255,0.06); }
+
+/* Animations */
+@keyframes fadeSlideIn { to { opacity:1; transform:translateY(0); } }
+body { opacity:0; transform:translateY(40px); animation: fadeSlideIn 1.2s ease-out forwards; }
+
+/* Responsive tweaks (mobile) */
+@media (max-width:768px) {
+:root { --header-offset-desktop: var(--header-offset-desktop); }
+body { padding-top: var(--header-offset-mobile); }
+header { flex-direction: column; align-items: flex-start; padding: 15px 30px; }
+.menu-icon { display: flex; }
+#nav-menu { display: none; flex-direction: column; width: 100%; background: rgba(68,68,68,0.92); position: absolute; top: 100%; right: 0; padding: 1rem; }
+#nav-menu.active { display: flex; }
+#nav-menu a { padding: 0.5rem 0; border-bottom: 1px solid #555; margin-left: 0; }
+.hero { padding: 120px 20px; }
+main { padding: 30px 5%; }
+}
+
+/* Utility: header hidden/compact */
+header.hidden { transform: translateY(-110%); opacity: 0; }
+header.compact { padding: 10px 18px; box-shadow: 0 4px 20px rgba(0,245,255,0.06); }
+header.compact h1 a { font-size: 1.4rem; }
+
+/* Back link */
+
+/* End of Updated style.css */
+/* Ensure title stays left and hamburger icon moves to right */
+header {
+  display: flex;
+  justify-content: space-between; /* title left, menu icon right */
+  align-items: center;
+}
+
+/* Position the nav menu on desktop as usual */
+#nav-menu {
+  order: 2; /* keep it after menu-icon in HTML flow */
+}
+
+/* Make hamburger appear on mobile only */
+.menu-icon {
+  display: none; /* desktop hidden by default */
+  order: 3; /* rightmost in flex */
+}
+
+/* Mobile adjustments */
+@media (max-width:768px) {
+  header {
+    flex-direction: row; /* keep icon right of title */
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-icon { display: flex; }
+  #nav-menu { display: none; position: absolute; top: 100%; right: 0; flex-direction: column; width: 100%; background: rgba(68,68,68,0.92); padding: 1rem; }
+  #nav-menu.active { display: flex; }
+}
+/* === Team Section Boxes === */
+.team-section h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 25px;
+  border-left: 5px solid #00f5ff;
+  padding-left: 10px;
+  text-shadow: 0 0 8px var(--primary-color);
+  text-align: center;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.team-member {
+  background: #101820;
+  border: 1px solid rgba(0,245,255,0.2);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  color: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+.team-member::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #00f5ff, #007bff, #00f5ff, #007bff);
+  opacity: 0.15;
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+}
+
+.team-member:hover::before {
+  opacity: 0.3;
+  transform: rotate(90deg);
+}
+
+.team-member:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(0,255,255,0.25);
+  border-color: #00f5ff;
+}
+
+.team-member img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 2px solid var(--primary-color);
+}
+
+.team-member h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.team-member p {
+  color: #bbb;
+  font-size: 0.95rem;
+  margin: 0;
+}
+/* === Hamburger Menu Icon === */
+.menu-icon {
+  display: none; /* visible only on mobile */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.menu-icon span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #00e6ff;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+}
+
+/* Animate the icon when active */
+.menu-icon.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-icon.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* === Toggle Menu Content === */
+#nav-menu {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Mobile-specific menu */
+@media (max-width: 768px) {
+  #nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 0 25px rgba(0, 245, 255, 0.25);
+    transition: all 0.4s ease;
+  }
+
+  #nav-menu.active {
+    display: flex;
+  }
+
+  #nav-menu a {
+    color: #00e6ff;
+    font-weight: 600;
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+    text-shadow: 0 0 8px #00f5ff;
+    transition: all 0.3s ease;
+  }
+
+  #nav-menu a:last-child {
+    border-bottom: none;
+  }
+
+  #nav-menu a:hover {
+    color: #ffffff;
+    background: rgba(0, 230, 255, 0.1);
+    box-shadow: 0 0 12px #00f5ff, 0 0 25px #00bfff;
+    border-radius: 8px;
+    transform: scale(1.05);
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+}
+/* === Futuristic Tech Blog — Full Glow CSS === */
+
+/* CSS Variables */
+:root {
+  --primary-color: #00e6ff;
+  --secondary-color: #007bff;
+  --accent-color: #00f5ff;
+  --bg-dark: #0a0a0a;
+  --bg-gradient: radial-gradient(circle at top left,#03111f,#060b18 60%,#020b16);
+  --header-height: 110px;
+}
+
+/* === Global Reset === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; scroll-behavior: smooth; }
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-gradient);
+  color: #e0faff;
+  line-height: 1.6;
+  padding-top: var(--header-height);
+  overflow-x: hidden;
+}
+
+/* Links */
+a { color: var(--primary-color); text-decoration: none; transition: all 0.3s ease; }
+a:hover { color: #fff; text-shadow: 0 0 12px var(--accent-color); }
+
+/* === Header === */
+/* === Header (Title Left, Hamburger Right) === */
+header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,245,255,0.1);
+  z-index: 1000;
+  transition: all 0.35s ease;
+}
+
+header h1 a {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px var(--accent-color);
+}
+
+/* === Hamburger Icon (Right Side) === */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1100;
+  order: 3; /* ensures it stays far right */
+}
+
+.menu-icon span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: var(--primary-color);
+  border-radius: 2px;
+  transition: all 0.4s ease;
+}
+
+.menu-icon.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-icon.active span:nth-child(2) { opacity: 0; }
+.menu-icon.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* === Navigation Menu === */
+#nav-menu {
+  display: flex;
+  gap: 1rem;
+  order: 2;
+}
+#nav-menu a {
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+#nav-menu a:hover {
+  text-shadow: 0 0 12px var(--accent-color);
+  background: rgba(0,230,255,0.1);
+}
+
+/* === Mobile Menu === */
+@media (max-width: 768px) {
+  .menu-icon { display: flex; }
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+  }
+  #nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 250px;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 0 25px rgba(0,245,255,0.25);
+  }
+  #nav-menu.active { display: flex; }
+  #nav-menu a {
+    margin: 0;
+    border-bottom: 1px solid rgba(0,245,255,0.15);
+  }
+  #nav-menu a:last-child { border-bottom: none; }
+}
+
+/* --- Fix hamburger icon position --- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background: linear-gradient(90deg, #0f0f1a, #111122);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Align header title (TechBlog) */
+header h1 a {
+  text-decoration: none;
+  color: #00e6ff;
+  font-size: 1.8rem;
+}
+
+/* Hamburger icon */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  position: absolute;
+  right: 25px; /* Push it to the right */
+  top: 25px;
+}
+
+.menu-icon span {
+  width: 25px;
+  height: 3px;
+  background: #00e6ff;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Animate icon when active */
+.menu-icon.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-icon.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Show hamburger only on small screens */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex;
+  }
+
+  nav#nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(15, 15, 30, 0.95);
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  nav#nav-menu.active {
+    display: flex;
+  }
+}
+
+/* === Hero Section === */
+.hero {
+  text-align: center;
+  padding: 120px 20px 80px;
+  background: linear-gradient(180deg,#0a0a0a,#111827);
+  border-bottom: 1px solid rgba(0,245,255,0.1);
+}
+.hero h2 {
+  font-size: 2.6rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  text-shadow: 0 0 15px var(--accent-color);
+}
+.hero p {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* === Boxes / Cards === */
+.box-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 25px;
+  padding: 40px 5%;
+}
+
+.box, .team-member, .post-container, .about-page, .contact-form {
+  background: rgba(16,24,32,0.8);
+  border-radius: 15px;
+  padding: 25px;
+  border: 1px solid rgba(0,245,255,0.2);
+  box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  transition: all 0.35s ease;
+}
+.box:hover, .team-member:hover, .post-container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 35px rgba(0,245,255,0.3), 0 0 50px rgba(0,180,255,0.2);
+  border-color: var(--accent-color);
+}
+
+/* Headings */
+.box h3, .team-member h4, .post-header h1 {
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  text-shadow: 0 0 8px var(--accent-color);
+}
+
+/* Text */
+.box p, .team-member p, .post-content p {
+  color: #d5eaff;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.more-btn, .back-link {
+  display: inline-block;
+  padding: 12px 35px;
+  border-radius: 25px;
+  background: var(--accent-color);
+  color: #000;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.more-btn:hover, .back-link:hover {
+  background: #00ffff;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--accent-color);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 25px 20px;
+  color: #6abbe9;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(0,255,255,0.1);
+  margin-top: 40px;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(10px);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-thumb{background:linear-gradient(#00bcd4,#007bff);border-radius:10px}
+::-webkit-scrollbar-track{background:rgba(0,255,255,0.06)}
+
+/* === Responsive tweaks === */
+@media (max-width: 768px) {
+  body{padding-top: 120px;}
+  header{flex-direction:column;align-items:flex-start;padding:15px 30px;}
+}
+/* === Subpage Headers as Neon Button-Style Elements === */
+
+/* === GLOBAL STYLES === */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Offset main content so it’s not hidden under header */
+main {
+  padding-top: 120px;
+}
+
+/* === HEADER === */
+header {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(12px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 6%;
+  border-bottom: 1px solid rgba(0, 230, 255, 0.2);
+}
+
+header h1 a {
+  color: #00e6ff;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+header h1 a:hover {
+  color: #fff;
+}
+
+/* === NAVIGATION === */
+#nav-menu {
+  display: flex;
+  gap: 25px;
+}
+
+#nav-menu a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+#nav-menu a:hover,
+#nav-menu a.active {
+  color: #00e6ff;
+}
+
+/* === HAMBURGER MENU === */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-icon span {
+  width: 26px;
+  height: 3px;
+  background: #00e6ff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* === MOBILE MENU === */
+@media (max-width: 768px) {
+  #nav-menu {
+    position: absolute;
+    top: 75px;
+    right: 0;
+    background: #111;
+    flex-direction: column;
+    width: 230px;
+    padding: 20px;
+    display: none;
+    border-radius: 0 0 0 12px;
+  }
+
+  #nav-menu.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+}
+
+/* === PAGE SECTIONS === */
+section {
+  max-width: 850px;
+  margin: 50px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+section h2 {
+  color: #00e6ff;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+section p {
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+/* === CONTACT FORM === */
+.contact-form form {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 230, 255, 0.2);
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 230, 255, 0.1);
+  text-align: left;
+}
+
+label {
+  color: #00e6ff;
+  font-weight: 500;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input:focus, textarea:focus {
+  border: 1px solid #00e6ff;
+  box-shadow: 0 0 8px #00e6ff;
+}
+
+/* === BUTTON === */
+.more-btn {
+  background: linear-gradient(90deg, #00e6ff, #007bff);
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.more-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px #00e6ff;
+}
+
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 40px 15px;
+  margin-top: 80px;
+  border-top: 1px solid #1f1f1f;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+/* === Meet Our Team Section === */
+.team-section {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+.team-section h2 {
+  font-size: 2.5rem;
+  color: #00e6ff;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* --- Team Grid Layout --- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- Each Team Member Card --- */
+.team-member {
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid #00e6ff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px #00e6ff66;
+}
+
+/* --- Auto-styled Image --- */
+.team-member img {
+  width: 160px;
+  height: 200px;
+  border-radius: 50%; /* circular */
+  object-fit: cover; /* neatly cropped */
+  border: 3px solid #00e6ff;
+  box-shadow: 0 0 15px #00e6ff55;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #00e6ffaa;
+}
+
+/* --- Name & Role Text --- */
+.team-member h4 {
+  color: #00e6ff;
+  font-size: 1.3rem;
+  margin: 10px 0 5px;
+}
+
+.team-member p {
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+/* --- Contact Info (future use) --- */
+.contact-info {
+  margin-top: 10px;
+}
+
+.contact-info a {
+  display: inline-block;
+  color: #00e6ff;
+  margin: 0 8px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #ffffff;
+}

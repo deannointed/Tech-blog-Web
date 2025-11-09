@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Tech Blog</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ===============================
+       HEADER
+  ================================ -->
+  <header id="main-header">
+    <div class="header-container">
+      <h1 class="logo"><a href="index.html">Tech Blog</a></h1>
+
+      <!-- Hamburger Menu Icon -->
+      <div class="menu-icon" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Navigation -->
+      <nav id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="comment.html">Comments</a>
+        <a href="teams.html">Meet Our Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===============================
+       MAIN CONTENT
+  ================================ -->
+  <main class="about-page">
+    <section class="intro section">
+      <h2>About Tech Blog</h2>
+      <p>
+        Welcome to <strong>Tech Blog</strong> — a digital space built for tech lovers,
+        innovators, and curious minds. We share the latest updates, trends, and insights
+        shaping the world of technology today and tomorrow.
+      </p>
+    </section>
+
+    <section class="mission section">
+      <h3>Our Mission</h3>
+      <p>
+        Our mission is to make technology understandable and exciting for everyone.
+        Whether you’re a student, creator, or professional, our goal is to keep you
+        informed and inspired through clear, high-quality content.
+      </p>
+    </section>
+
+    <section class="focus section">
+      <h3>What We Focus On</h3>
+      <ul>
+        <li>Artificial Intelligence and Emerging Tech</li>
+        <li>Gadgets, Reviews, and Innovations</li>
+        <li>Startups and Future Trends</li>
+        <li>Cybersecurity and Digital Privacy</li>
+        <li>Software, Apps, and Cloud Solutions</li>
+      </ul>
+    </section>
+
+    <section class="closing section">
+      <p>
+        At <strong>Tech Blog</strong>, we believe technology should inspire, not confuse.
+        Join us as we explore the breakthroughs that define the future.
+      </p>
+      <a href="contact.html" class="btn">Contact Us</a>
+    </section>
+  </main>
+
+  <!-- ===============================
+       FOOTER
+  ================================ -->
+  <footer>
+    <p>© 2025 Tech Blog — All Rights Reserved.</p>
+  </footer>
+
+  <!-- ===============================
+       JAVASCRIPT
+  ================================ -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      const icon = document.querySelector('.menu-icon');
+      menu.classList.toggle('active');
+      icon.classList.toggle('active');
+    }
+
+    // Header scroll animation
+    let lastScroll = 0;
+    const header = document.getElementById('main-header');
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > lastScroll) {
+        header.classList.remove('scroll-up');
+        header.classList.add('scroll-down');
+      } else {
+        header.classList.remove('scroll-down');
+        header.classList.add('scroll-up');
+      }
+
+      lastScroll = currentScroll;
+    });
+  </script>
+</body>
+</html>
