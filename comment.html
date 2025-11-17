@@ -45,18 +45,19 @@
 
     <section class="contact-form">
       <h2>Send Us a Message</h2>
-      <form action="https://formsubmit.co/adewunmidarasimi5@gmail.com" method="POST">
-        <label for="name">Full Name</label><br />
-        <input type="text" id="name" name="name" placeholder="Enter your full name" required /><br /><br />
+      <form id="commentForm">
+  <label for="name">Full Name</label><br />
+  <input type="text" id="name" name="name" placeholder="Enter your full name" /><br /><br />
 
-        <label for="email">Email</label><br />
-        <input type="email" id="email" name="email" placeholder="Enter your email" required /><br /><br />
+  <label for="email">Email</label><br />
+  <input type="email" id="email" name="email" placeholder="Enter your email" /><br /><br />
 
-        <label for="message">Comment</label><br />
-        <textarea id="message" name="message" rows="5" placeholder="Write your comment..." required></textarea><br /><br />
+  <label for="message">Comment</label><br />
+  <textarea id="message" name="message" rows="5" placeholder="Write your comment..."></textarea><br /><br />
 
-        <button type="submit" class="more-btn">We'd Love Your Comment!</button>
-      </form>
+  <button type="submit" class="more-btn">We'd Love Your Comment!</button>
+</form>
+
     </section>
   </main>
 
@@ -89,6 +90,97 @@
       lastScroll = currentScroll;
     });
   </script>
+<script>
+  const commentForm = document.getElementById("commentForm");
+
+  commentForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let message = document.getElementById("message").value.trim();
+
+    if (name === "" || email === "" || message === "") {
+      showPopup("❌ Invalid Response", "Please fill out all fields before submitting.");
+      return;
+    }
+
+    showPopup("✅ Success!", "Your comment has been submitted. Thank you!");
+    
+    commentForm.reset();
+  });
+
+  function showPopup(title, text) {
+    const popup = document.createElement("div");
+    popup.className = "popup-box";
+
+    popup.innerHTML = `
+      <div class="popup-content">
+        <h3>${title}</h3>
+        <p>${text}</p>
+        <button class="close-popup">OK</button>
+      </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    popup.querySelector(".close-popup").onclick = () => popup.remove();
+  }
+</script>
+
+<style>
+  .popup-box {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+    z-index: 9999;
+  }
+
+  .popup-content {
+    background: #fff;
+    padding: 25px 35px;
+    text-align: center;
+    border-radius: 12px;
+    width: 85%;
+    max-width: 350px;
+    animation: popUp 0.25s ease-out;
+  }
+
+  .popup-content h3 {
+    margin-bottom: 10px;
+    color: #d32f2f;
+  }
+
+  .popup-content p {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .popup-content .close-popup {
+    padding: 10px 25px;
+    border: none;
+    background: #3498db;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes popUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+
 
 </body>
 </html>

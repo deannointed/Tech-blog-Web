@@ -9,7 +9,7 @@
 <body>
 
   <!-- Header -->
-  <header class="header">
+  <header class="header" id="header">
     <h1><a href="index.html">TechBlog</a></h1>
     <!-- Hamburger Menu Icon -->
 <div class="menu-icon" onclick="toggleMenu()">
@@ -41,7 +41,7 @@
 
     <section class="contact-form">
       <h2>Send Us a Message</h2>
-      <form action="https://formsubmit.co/adewunmidarasimi5@gmail.com" method="POST">
+      <form >
         <label for="name">Full Name</label><br />
         <input type="text" id="name" name="name" placeholder="Enter your full name" required /><br /><br />
 
@@ -57,31 +57,132 @@
   </main>
 
   
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('nav-menu');
-      const icon = document.querySelector('.menu-icon');
-      menu.classList.toggle('active');
-      icon.classList.toggle('active');
-    }
-
-    let lastScroll = 0;
-    const header = document.getElementById('main-header');
-
-    window.addEventListener("scroll", () => {
-      const currentScroll = window.pageYOffset;
-      if(currentScroll > lastScroll){
-        header.classList.remove("scroll-up");
-        header.classList.add("scroll-down");
-      } else {
-        header.classList.remove("scroll-down");
-        header.classList.add("scroll-up");
-      }
-      lastScroll = currentScroll;
-    });
-  </script>
-
+ 
   <!-- Footer -->
   <footer>
     <p>© 2025 TechBlog — All Rights Reserved.</p>
-  </foo
+  </footer>
+
+   <script>
+// Toggle Menu
+function toggleMenu() {
+  const menu = document.getElementById('nav-menu');
+  const icon = document.querySelector('.menu-icon');
+  menu.classList.toggle('active');
+  icon.classList.toggle('active');
+}
+
+// Hide/Show Header on Scroll
+let lastScroll = 0;
+const header = document.getElementById('header');
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > lastScroll) {
+    header.classList.remove("scroll-up");
+    header.classList.add("scroll-down");
+  } else {
+    header.classList.remove("scroll-down");
+    header.classList.add("scroll-up");
+  }
+  lastScroll = currentScroll;
+});
+
+// Custom Popup + Form Validation
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const msg = document.getElementById("message").value.trim();
+
+    if (name === "" || email === "" || msg === "") {
+      showPopup("❌ Invalid Response", "Please fill all fields before submitting.");
+      return;
+    }
+
+    showPopup("✅ Message Sent", "Your message has been received. Thank you!");
+    form.reset();
+  });
+});
+
+// Popup Function
+function showPopup(title, text) {
+  const popup = document.createElement("div");
+  popup.className = "popup-box";
+
+  popup.innerHTML = `
+    <div class="popup-content">
+      <h3>${title}</h3>
+      <p>${text}</p>
+      <button class="close-popup">OK</button>
+    </div>
+  `;
+
+  document.body.appendChild(popup);
+
+  popup.querySelector(".close-popup").onclick = () => popup.remove();
+}
+</script>
+
+<style>
+/* Popup Styling */
+.popup-box {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-in-out;
+  z-index: 9999;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 25px 35px;
+  text-align: center;
+  border-radius: 12px;
+  width: 85%;
+  max-width: 350px;
+  animation: popUp 0.25s ease-out;
+}
+
+.popup-content h3 {
+  margin-bottom: 10px;
+  color: #3498db;
+  font-weight: 700;
+}
+
+.popup-content p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.popup-content .close-popup {
+  padding: 10px 25px;
+  border: none;
+  background: #3498db;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+</style>
+
+</body>
+</html>
